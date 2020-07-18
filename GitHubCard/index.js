@@ -89,6 +89,15 @@ const cardMaker = (data) => {
   cardImg.src(data.avatar_url);
   cardLink.setAttribute('href', data.url);
 
+  cardName.textContent(data.name);
+  cardUserName.textContent(data.login);
+  cardLocation.textContent(data.location);
+  cardProfile.textContent("Profile: ");
+  cardFollowers.textContent("Followers: " + data.followers);
+  cardFollowing.textContent("Following: " + data.following);
+  cardBio.textContent("Bio: " + data.bio);
+
+
 }
 
 /*
