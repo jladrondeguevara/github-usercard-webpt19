@@ -80,10 +80,10 @@ const cardMaker = (data) => {
   cardInfo.appendChild(cardFollowing);
   cardInfo.appendChild(cardBio);
 
-
-
-
-
+  card.classList.add('class');
+  cardInfo.classList.add('card-info');
+  cardName.classList.add('name')
+  cardUserName.classList.add('username');
 }
 
 /*
