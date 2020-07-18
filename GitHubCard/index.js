@@ -68,6 +68,22 @@ const cardMaker = (data) => {
   const cardFollowers = document.createElement('p');
   const cardFollowing = document.createElement('p');
   const cardBio = document.createElement('p');
+
+  card.appendChild(cardImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUserName);
+  cardInfo.appendChild(cardLocation);
+  cardInfo.appendChild(cardProfile);
+  cardProfile.appendChild(cardLink);
+  cardInfo.appendChild(cardFollowers);
+  cardInfo.appendChild(cardFollowing);
+  cardInfo.appendChild(cardBio);
+
+
+
+
+
 }
 
 /*
