@@ -8,7 +8,9 @@ import axios from 'axios';
 axios.get("https://api.github.com/users/jladrondeguevara")
 .then((response) => {
   console.log(response.data);
-  cardMaker(response.data);
+  const newCard = cardMaker(response.data);
+  const cards = document.querySelector(".cards");
+  cards.appendChild(newCard);
 })
 
 /*
@@ -24,7 +26,7 @@ axios.get("https://api.github.com/users/jladrondeguevara")
     and append the returned markup to the DOM as a child of .cards
 */
 
-const cards = document.querySelector(".cards");
+
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
     follow this link in your browser https://api.github.com/users/<Your github name>/followers,
@@ -36,7 +38,13 @@ const cards = document.querySelector(".cards");
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = [
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell",
+];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -76,29 +84,32 @@ const cardMaker = (data) => {
   cardInfo.appendChild(cardName);
   cardInfo.appendChild(cardUserName);
   cardInfo.appendChild(cardLocation);
+  cardProfile.appendChild(cardLink);
   cardInfo.appendChild(cardProfile);
   cardProfile.appendChild(cardLink);
   cardInfo.appendChild(cardFollowers);
   cardInfo.appendChild(cardFollowing);
   cardInfo.appendChild(cardBio);
 
-  card.classList.add('class');
+  card.classList.add('card');
   cardInfo.classList.add('card-info');
   cardName.classList.add('name')
   cardUserName.classList.add('username');
 
   // <img src={image url of user} />
   cardImg.src = data.avatar_url;
-  cardLink.setAttribute('href', data.url);
+  cardLink.href = data.html_url;
 
   cardName.textContent = data.name;
   cardUserName.textContent = data.login;
-  cardLocation.textContent = data.location;
+  cardLocation.textContent = "Location: " + data.location;
   cardProfile.textContent = "Profile: ";
+  cardLink.textContent = data.html_url;
   cardFollowers.textContent = "Followers: " + data.followers;
   cardFollowing.textContent = "Following: " + data.following;
   cardBio.textContent = "Bio: " + data.bio;
 
+  return card;
 }
 
 /*
