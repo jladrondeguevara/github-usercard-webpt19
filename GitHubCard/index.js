@@ -84,6 +84,11 @@ const cardMaker = (data) => {
   cardInfo.classList.add('card-info');
   cardName.classList.add('name')
   cardUserName.classList.add('username');
+
+  // <img src={image url of user} />
+  cardImg.src(data.avatar_url);
+  cardLink.setAttribute('href', data.url);
+
 }
 
 /*
