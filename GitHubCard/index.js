@@ -8,6 +8,7 @@ import axios from 'axios';
 axios.get("https://api.github.com/users/jladrondeguevara")
 .then((response) => {
   console.log(response.data);
+  cardMaker(response.data);
 })
 
 /*
@@ -23,6 +24,7 @@ axios.get("https://api.github.com/users/jladrondeguevara")
     and append the returned markup to the DOM as a child of .cards
 */
 
+const cards = document.querySelector(".cards");
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
     follow this link in your browser https://api.github.com/users/<Your github name>/followers,
@@ -86,17 +88,16 @@ const cardMaker = (data) => {
   cardUserName.classList.add('username');
 
   // <img src={image url of user} />
-  cardImg.src(data.avatar_url);
+  cardImg.src = data.avatar_url;
   cardLink.setAttribute('href', data.url);
 
-  cardName.textContent(data.name);
-  cardUserName.textContent(data.login);
-  cardLocation.textContent(data.location);
-  cardProfile.textContent("Profile: ");
-  cardFollowers.textContent("Followers: " + data.followers);
-  cardFollowing.textContent("Following: " + data.following);
-  cardBio.textContent("Bio: " + data.bio);
-
+  cardName.textContent = data.name;
+  cardUserName.textContent = data.login;
+  cardLocation.textContent = data.location;
+  cardProfile.textContent = "Profile: ";
+  cardFollowers.textContent = "Followers: " + data.followers;
+  cardFollowing.textContent = "Following: " + data.following;
+  cardBio.textContent = "Bio: " + data.bio;
 
 }
 
