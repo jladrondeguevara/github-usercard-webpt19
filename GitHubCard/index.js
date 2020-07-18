@@ -7,7 +7,6 @@ import axios from 'axios';
 
 axios.get("https://api.github.com/users/jladrondeguevara")
 .then((response) => {
-  console.log(response.data);
   const newCard = cardMaker(response.data);
   const cards = document.querySelector(".cards");
   cards.appendChild(newCard);
@@ -52,7 +51,6 @@ const followersArray = [
 followersArray.forEach(follower => {
   axios.get(`https://api.github.com/users/${follower}`)
   .then((response) => {
-    console.log(response.data);
     const newCard = cardMaker(response.data);
     const cards = document.querySelector(".cards");
     cards.appendChild(newCard);
@@ -92,18 +90,7 @@ const cardMaker = (data) => {
   const cardFollowing = document.createElement('p');
   const cardBio = document.createElement('p');
 
-  card.appendChild(cardImg);
-  card.appendChild(cardInfo);
-  cardInfo.appendChild(cardName);
-  cardInfo.appendChild(cardUserName);
-  cardInfo.appendChild(cardLocation);
-  cardProfile.appendChild(cardLink);
-  cardInfo.appendChild(cardProfile);
-  cardProfile.appendChild(cardLink);
-  cardInfo.appendChild(cardFollowers);
-  cardInfo.appendChild(cardFollowing);
-  cardInfo.appendChild(cardBio);
-
+  
   card.classList.add('card');
   cardInfo.classList.add('card-info');
   cardName.classList.add('name')
@@ -121,6 +108,18 @@ const cardMaker = (data) => {
   cardFollowers.textContent = "Followers: " + data.followers;
   cardFollowing.textContent = "Following: " + data.following;
   cardBio.textContent = "Bio: " + data.bio;
+
+  card.appendChild(cardImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardName);
+  cardInfo.appendChild(cardUserName);
+  cardInfo.appendChild(cardLocation);
+  cardProfile.appendChild(cardLink);
+  cardInfo.appendChild(cardProfile);
+  cardInfo.appendChild(cardFollowers);
+  cardInfo.appendChild(cardFollowing);
+  cardInfo.appendChild(cardBio);
+
 
   return card;
 }
